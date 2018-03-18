@@ -10,12 +10,20 @@ class BurgerBuilder extends Component{
         meat:  0
       }
   }
+  addBacon = (event) => {
+    this.setState((prevState, props) => {
+      return{
+        bacon: prevState.bacon + 1
+      }
+    })
+  }
 
   render() {
     return (
       <Fragment>
           <Burger ingredients = {this.state.ingredients} />
           <div>Build Controls</div>
+
       </Fragment>
     );
   }
