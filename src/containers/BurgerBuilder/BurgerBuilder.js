@@ -29,6 +29,9 @@ class BurgerBuilder extends Component{
   purchaseCancelHandler = () => {
     this.setState({purchasing: false})
   }
+  purchaseContinueHandler = () => {
+    alert ('You continue!');
+  }
   updatePurchaseState(ingredients) {
     const cloneIngredients = {...ingredients};
     const sum = Object.keys(cloneIngredients).map(ingKey => {
@@ -73,7 +76,9 @@ class BurgerBuilder extends Component{
     return (
       <Fragment>
           <Modal show = {this.state.purchasing} modalClosed = {this.purchaseCancelHandler}>
-            <OrderSummary ingredients = {this.state.ingredients} />
+            <OrderSummary ingredients = {this.state.ingredients}
+                          purchaseCanceled = {this.purchaseCancelHandler}
+                          purchaseContinued = {this.purchaseContinueHandler}/>
           </Modal>
           <Burger ingredients = {this.state.ingredients} />
           <BuildControls ingredients = {this.state.ingredients}
