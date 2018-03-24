@@ -20,7 +20,6 @@ class Layout extends Component{
   render(){
     return(
       <Fragment>
-        <div>Toolbar, Sidedrawer, Backdrop</div>
         <Toolbar clicked = {this.sideDrawerToggleHandler}/>
         <Sidedrawer open = {this.state.showSideDrawer} closed = {this.sideDrawerClosedHandler}/>
         <main className = {classes.Content}>
