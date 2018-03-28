@@ -3,6 +3,11 @@ import Button from '../../UI/Button/Button';
 class OrderSummary extends Component {
   componentWillUpdate(){
     console.log('[Order Summary] will update');
+    console.log(this.props);
+
+  }
+  purchaseCanceled() {
+    this.props.history.push('/');
   }
   render(){
     const ingredientSummary = Object.keys(this.props.ingredients)
