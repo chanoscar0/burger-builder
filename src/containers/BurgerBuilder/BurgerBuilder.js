@@ -15,7 +15,7 @@ class BurgerBuilder extends Component{
       purchasing: false
   }
   componentDidMount() {
-
+    this.props.onInitIngredients();
   }
   purchaseHandler = () =>{
     this.setState({purchasing: true})
@@ -45,9 +45,7 @@ class BurgerBuilder extends Component{
       disabledInfo[key] = disabledInfo[key] <= 0;
     } // {salad: true, meat: false, bacon: true, cheese: true}
     let orderSummary = null;
-
-
-    let burger = this.state.error ? <p>Ingredients couldn't be loaded!</p>: <Spinner />;
+    let burger = this.props.error ? <p>Ingredients couldn't be loaded!</p>: <Spinner />;
     if (this.props.ings){
       burger =  (
        <Fragment>
@@ -81,14 +79,15 @@ class BurgerBuilder extends Component{
 const mapStateToProps = state => {
   return {
     ings: state.ingredients,
-    price: state.totalPrice
+    price: state.totalPrice,
+    error: state.error
   };
 }
 const mapDispatchToProps = dispatch => {
   return {
     onIngredientAdded: (ingName) => dispatch(burgerBuilderActions.addIngredient(ingName)),
-    onIngredientRemoved: (ingName) => dispatch(burgerBuilderActions.removeIngredient(ingName))
-
+    onIngredientRemoved: (ingName) => dispatch(burgerBuilderActions.removeIngredient(ingName)),
+    onInitIngredients: () => dispatch(burgerBuilderActions.initIngredients())
   };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(BurgerBuilder, instance));
