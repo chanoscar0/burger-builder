@@ -1,28 +1,21 @@
 import React, {Component, Fragment} from 'react';
 import { connect } from 'react-redux';
+import instance from '../../axios-orders';
+
 import Burger from '../../components/Burger/Burger'
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary'
-import instance from '../../axios-orders';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../components/withErrorHandler/withErrorHandler';
 import * as burgerBuilderActions from '../../store/actions/index';
 
 class BurgerBuilder extends Component{
   state = {
-      purchasing: false,
-      loading: false,
-      error: false
+      purchasing: false
   }
   componentDidMount() {
-  /*  instance.get('https://burger-builder-a4ab2.firebaseio.com/ingredients.json')
-            .then(response => {
-              this.setState({ingredients: response.data})
-            })
-            .catch(error => {
-              this.setState({error: true});
-            });*/
+
   }
   purchaseHandler = () =>{
     this.setState({purchasing: true})
@@ -73,9 +66,7 @@ class BurgerBuilder extends Component{
                                       purchaseContinued = {this.purchaseContinueHandler}
                                       price = {this.props.price}/>
     }
-    if (this.state.loading){
-      orderSummary = <Spinner />;
-    }
+
     return (
       <Fragment>
           <Modal show = {this.state.purchasing} modalClosed = {this.purchaseCancelHandler}>
