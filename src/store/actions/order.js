@@ -15,8 +15,15 @@ export const purchaseBurgerFailed = (errorMessage) => {
   }
 };
 
-export const purchaseBurgerStart = (orderData) => {
+export const purchaseBurgerStart = () => {
+  return {
+    type: actionTypes.PURCHASE_BURGER_START
+  }
+}
+
+export const purchase = (orderData) => {
   return dispatch => {
+    dispatch(purchaseBurgerStart());
     instance.post('/orders.json', orderData)
             .then(response => {
               dispatch(purchaseBurgerSuccess(response.data, orderData));
