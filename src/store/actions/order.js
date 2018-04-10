@@ -33,4 +33,9 @@ export const purchase = (orderData) => {
             });
 
   }
+};
+export const purchaseInit = () => {
+  return{
+    type: actionTypes.PURCHASE_INIT
+  }
 }
