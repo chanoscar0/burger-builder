@@ -7,7 +7,7 @@ const checkoutSummary = (props) => {
 
   return(
     <div className = {classes.CheckOutSummary}>
-      <h1>We hope it tastes well!</h1>
+      <h1>Does your Burger look like how you want it?</h1>
       <div style = {{width: '100%', margin: 'auto'}}>
         <Burger ingredients = {props.ingredients}/>
       </div>

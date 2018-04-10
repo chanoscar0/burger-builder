@@ -8,19 +8,22 @@ export const purchaseBurgerSuccess = (id, orderData) => {
     }
 };
 
+export const purchaseInit = () => {
+  return{
+    type: actionTypes.PURCHASE_INIT
+  };
+};
 export const purchaseBurgerFailed = (errorMessage) => {
   return {
     type: actionTypes.PURCHASE_BURGER_FAILED,
     error: errorMessage
   }
 };
-
 export const purchaseBurgerStart = () => {
   return {
     type: actionTypes.PURCHASE_BURGER_START
-  }
-}
-
+  };
+};
 export const purchase = (orderData) => {
   return dispatch => {
     dispatch(purchaseBurgerStart());
@@ -34,8 +37,39 @@ export const purchase = (orderData) => {
 
   }
 };
-export const purchaseInit = () => {
+export const fetchOrdersSuccess = (orders) => {
   return{
-    type: actionTypes.PURCHASE_INIT
+    type: actionTypes.FETCH_ORDERS_SUCCESS,
+    orders: orders
+
+  };
+};
+export const fetchOrdersFailed = (error) => {
+  return {
+    type: actionTypes.FETCH_ORDERS_FAILED,
+    error: error
+  };
+};
+export const fetchOrdersStart = () => {
+  return {
+    type: actionTypes.FETCH_ORDERS_START
+  }
+}
+export const fetchOrders = () => {
+  return dispatch => {
+    dispatch(fetchOrdersStart());
+    instance.get('/orders.json')
+        .then(result => {
+          let fetchedOrders = [];
+
+          for (let key in result.data){
+            fetchedOrders.push({...result.data[key],
+            id: key});
+          }
+          dispatch(fetchOrdersSuccess(fetchedOrders));
+        })
+        .catch(err => {
+          dispatch(fetchOrdersFailed(err));
+        })
   }
 }

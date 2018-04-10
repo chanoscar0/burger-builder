@@ -160,7 +160,7 @@ class ContactData extends Component {
                  invalid = {!formElement.config.valid}
                  shouldValidate = {formElement.config.validation}/>
         ))}
-        <Button btnType = 'Success' disabled = {!this.state.formIsValid} > ORDER</Button>
+        <Button btnType = 'Success' disabled = {!this.state.formIsValid} >ORDER</Button>
       </form>
     );
     if (this.props.loading){
