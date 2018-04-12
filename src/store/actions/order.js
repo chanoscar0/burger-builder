@@ -55,10 +55,11 @@ export const fetchOrdersStart = () => {
     type: actionTypes.FETCH_ORDERS_START
   }
 }
-export const fetchOrders = (token) => {
+export const fetchOrders = (token, userID) => {
   return dispatch => {
     dispatch(fetchOrdersStart());
-    instance.get('/orders.json?auth=' + token)
+    const queryParams = '?auth=' + token + '&orderBy="userID"&equalTo="' + userID + '"';
+    instance.get('/orders.json' + queryParams)
         .then(result => {
           let fetchedOrders = [];
 

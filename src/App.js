@@ -13,8 +13,6 @@ class App extends Component {
   componentDidMount(){
     this.props.onTryAutoSignup();
   }
-
-
   render() {
 
     let routes = (
@@ -28,12 +26,13 @@ class App extends Component {
     if (this.props.isAuthenticated){
       routes = (
         <Switch>
-            <Redirect to='/' />
 
             <Route path = '/checkout'  component = {Checkout} />
             <Route path = '/orders'  component = {Orders} />
             <Route path = '/logout' component = {Logout} />
             <Route path = '/' exact component = {BurgerBuilder} />
+            <Redirect to='/' />
+
         </Switch>
         );
     }
