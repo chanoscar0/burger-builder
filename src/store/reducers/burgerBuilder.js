@@ -21,9 +21,10 @@ const reducer = (state = initialState, action) => {
           ingredients: {
             ...state.ingredients,
             [action.ingredientName]: state.ingredients[action.ingredientName] + 1,
-            building: true
+            
           },
-          totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName]
+          totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName],
+          building: true
       };
     case actionTypes.REMOVE_INGREDIENT:
       return {
@@ -31,9 +32,10 @@ const reducer = (state = initialState, action) => {
         ingredients: {
           ...state.ingredients,
           [action.ingredientName]: state.ingredients[action.ingredientName] - 1,
-          building: true
         },
-        totalPrice: state.totalPrice - INGREDIENT_PRICES[action.ingredientName]
+        totalPrice: state.totalPrice - INGREDIENT_PRICES[action.ingredientName],
+        building: true
+
       };
     case actionTypes.SET_INGREDIENTS:
       return {
