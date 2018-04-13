@@ -7,7 +7,6 @@ const Order = (props) => {
     ingredientArray.push({name: ingredient,
                      amount: props.ingredients[ingredient]});
   }
-  console.log(ingredientArray);
   let ingredientOutput = ingredientArray.map(ingredient => {
     return <span style = {{textTransform: 'capitalize',
                            display: 'inline-block',
