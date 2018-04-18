@@ -1,7 +1,7 @@
 import React, {Fragment, Component} from 'react';
 import Button from '../../UI/Button/Button';
 class OrderSummary extends Component {
-  
+
   purchaseCanceled() {
     this.props.history.push('/');
   }
@@ -14,7 +14,7 @@ class OrderSummary extends Component {
     return (
       <Fragment>
         <h3>Your Order </h3>
-        <p>A delicious burger with the following ingredients:</p>
+        <p>Your delicious burger is going to look like this:</p>
         <ul>
           {ingredientSummary}
         </ul>
